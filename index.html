@@ -107,7 +107,13 @@
         const { checked, value } = item;
         // 打勾
         if (checked) {
-          filter = `&categories_like=\\b${value}\\b`;
+          // 若有特殊符號
+          if (/.*[!@#$%^&*()].*/.test(value)) {
+            filter = `&categories_like=${encodeURIComponent(value)}`;
+          } else {
+            // 若無特殊符號
+            filter = `&categories_like=\\b(${value})\\b`;
+          }
           urlFilter += filter;
         }
       });
