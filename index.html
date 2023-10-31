@@ -6,83 +6,85 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="flex">
-      <ul class="js-checkboxGroup">
-        <li class="mb-2">
-          <label class="fs-7 text-nowrap" for="backendC">
-            <input
-              class="js-category"
-              type="checkbox"
-              name="C"
-              id="backendC"
-              value="C"
-            />
-            <span>C<span data-category="C"></span></span>
-          </label>
-        </li>
-        <li class="mb-2">
-          <label class="fs-7 text-nowrap" for="backendCSharp">
-            <input
-              class="js-category"
-              type="checkbox"
-              name="CSharp"
-              id="backendCSharp"
-              value="C#"
-            />
-            <span>C#<span data-category="C#"></span></span>
-          </label>
-        </li>
-        <li class="mb-2">
-          <label class="fs-7 text-nowrap" for="backendJava">
-            <input
-              class="js-category"
-              type="checkbox"
-              name="Java"
-              id="backendJava"
-              value="Java"
-            />
-            <span>Java<span data-category="Java"></span></span>
-          </label>
-        </li>
-        <li class="mb-2">
-          <label class="fs-7 text-nowrap" for="backendJavaScript">
-            <input
-              class="js-category"
-              type="checkbox"
-              name="JavaScript"
-              id="backendJavaScript"
-              value="JavaScript"
-            />
-            <span>JavaScript <span data-category="JavaScript"></span></span>
-          </label>
-        </li>
-        <li class="mb-2">
-          <label class="fs-7 text-nowrap" for="frontendScss">
-            <input
-              class="js-category"
-              type="checkbox"
-              name="scss"
-              id="frontendScss"
-              value="SCSS"
-            />
-            <span>SCSS<span data-category="SCSS"></span></span>
-          </label>
-        </li>
-        <li class="mb-2">
-          <label class="fs-7 text-nowrap" for="frontendCss">
-            <input
-              class="js-category"
-              type="checkbox"
-              name="css"
-              id="frontendCss"
-              value="CSS"
-            />
-            <span>CSS<span data-category="CSS"></span></span>
-          </label>
-        </li>
-      </ul>
-      <ul class="js-cardGroup"></ul>
-    </div>
+    <h3>
+      json server 篩選陣列的問題：<br />(1) 篩選 C 出現 C#。 (2) 篩選 C#
+      出現所有包含 C 的結果。
+    </h3>
+    <ul class="js-checkboxGroup">
+      <li class="mb-2">
+        <label class="fs-7 text-nowrap" for="backendC">
+          <input
+            class="js-category"
+            type="checkbox"
+            name="C"
+            id="backendC"
+            value="C"
+          />
+          <span>C<span data-category="C"></span></span>
+        </label>
+      </li>
+      <li class="mb-2">
+        <label class="fs-7 text-nowrap" for="backendCSharp">
+          <input
+            class="js-category"
+            type="checkbox"
+            name="CSharp"
+            id="backendCSharp"
+            value="C#"
+          />
+          <span>C#<span data-category="C#"></span></span>
+        </label>
+      </li>
+      <li class="mb-2">
+        <label class="fs-7 text-nowrap" for="backendJava">
+          <input
+            class="js-category"
+            type="checkbox"
+            name="Java"
+            id="backendJava"
+            value="Java"
+          />
+          <span>Java<span data-category="Java"></span></span>
+        </label>
+      </li>
+      <li class="mb-2">
+        <label class="fs-7 text-nowrap" for="backendJavaScript">
+          <input
+            class="js-category"
+            type="checkbox"
+            name="JavaScript"
+            id="backendJavaScript"
+            value="JavaScript"
+          />
+          <span>JavaScript <span data-category="JavaScript"></span></span>
+        </label>
+      </li>
+      <li class="mb-2">
+        <label class="fs-7 text-nowrap" for="frontendScss">
+          <input
+            class="js-category"
+            type="checkbox"
+            name="scss"
+            id="frontendScss"
+            value="SCSS"
+          />
+          <span>SCSS<span data-category="SCSS"></span></span>
+        </label>
+      </li>
+      <li class="mb-2">
+        <label class="fs-7 text-nowrap" for="frontendCss">
+          <input
+            class="js-category"
+            type="checkbox"
+            name="css"
+            id="frontendCss"
+            value="CSS"
+          />
+          <span>CSS<span data-category="CSS"></span></span>
+        </label>
+      </li>
+    </ul>
+    <ul class="js-cardGroup"></ul>
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
