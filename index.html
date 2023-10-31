@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="flex">
+      <ul class="js-checkboxGroup">
+        <li class="mb-2">
+          <label class="fs-7 text-nowrap" for="backendC">
+            <input
+              class="js-category"
+              type="checkbox"
+              name="C"
+              id="backendC"
+              value="C"
+            />
+            <span>C<span data-category="C"></span></span>
+          </label>
+        </li>
+        <li class="mb-2">
+          <label class="fs-7 text-nowrap" for="backendCSharp">
+            <input
+              class="js-category"
+              type="checkbox"
+              name="CSharp"
+              id="backendCSharp"
+              value="C#"
+            />
+            <span>C#<span data-category="C#"></span></span>
+          </label>
+        </li>
+        <li class="mb-2">
+          <label class="fs-7 text-nowrap" for="backendJava">
+            <input
+              class="js-category"
+              type="checkbox"
+              name="Java"
+              id="backendJava"
+              value="Java"
+            />
+            <span>Java<span data-category="Java"></span></span>
+          </label>
+        </li>
+        <li class="mb-2">
+          <label class="fs-7 text-nowrap" for="backendJavaScript">
+            <input
+              class="js-category"
+              type="checkbox"
+              name="JavaScript"
+              id="backendJavaScript"
+              value="JavaScript"
+            />
+            <span>JavaScript <span data-category="JavaScript"></span></span>
+          </label>
+        </li>
+        <li class="mb-2">
+          <label class="fs-7 text-nowrap" for="frontendScss">
+            <input
+              class="js-category"
+              type="checkbox"
+              name="scss"
+              id="frontendScss"
+              value="SCSS"
+            />
+            <span>SCSS<span data-category="SCSS"></span></span>
+          </label>
+        </li>
+        <li class="mb-2">
+          <label class="fs-7 text-nowrap" for="frontendCss">
+            <input
+              class="js-category"
+              type="checkbox"
+              name="css"
+              id="frontendCss"
+              value="CSS"
+            />
+            <span>CSS<span data-category="CSS"></span></span>
+          </label>
+        </li>
+      </ul>
+      <ul class="js-cardGroup"></ul>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const categories = document.querySelectorAll([".js-category"]);
+    let cardData = [];
+    let filter = "";
+    let urlFilter = "";
+
+    categories.forEach((item) => {
+      item.addEventListener("change", () => handleFilter());
+    });
+
+    // 篩選功能
+    function handleFilter() {
+      // 每次篩選重新檢查打勾項目並加入篩選
+      filter = "";
+      urlFilter = "";
+      categories.forEach((item) => {
+        const { checked, value } = item;
+        // 打勾
+        if (checked) {
+          filter = `&categories_like=\\b${value}\\b`;
+          urlFilter += filter;
+        }
+      });
+      getData(urlFilter);
+    }
+
+    //呼叫api
+    async function getData(filters) {
+      try {
+        const api = "https://jsonserverqa.onrender.com";
+        const url = `${api}/cards?_page=1${filters}`;
+        const { data } = await axios.get(url);
+        console.log(url);
+        cardData = data;
+        render();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    // 渲染畫面
+    function render() {
+      const cardGroup = document.querySelector(".js-cardGroup");
+      let categoryHtml = "";
+      cardData.forEach((card) => {
+        categoryHtml += `<li>${card.title}：${card.categories
+          .map((category) => `<span>${category}<span>`)
+          .join("、")}</li>`;
+      });
+      cardGroup.innerHTML = categoryHtml;
+    }
+    getData(urlFilter);
+  </script>
+</html>
